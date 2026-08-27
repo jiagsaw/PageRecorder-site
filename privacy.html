@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PageRecorder 隐私政策：本地存储、诊断日志、Google Drive 和 Google Docs 数据处理说明。">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f6faf7">
+  <title>隐私政策 · PageRecorder</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html" aria-label="PageRecorder 首页">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>PageRecorder</span>
+      </a>
+      <nav class="site-nav" aria-label="主要导航">
+        <a href="index.html">产品</a>
+        <a href="privacy.html" aria-current="page">隐私</a>
+        <a href="support.html">支持</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="shell">
+        <p class="eyebrow">Privacy Policy</p>
+        <h1>先说清楚数据，再开始记录。</h1>
+        <p class="lead">PageRecorder 本地优先。截图、录屏和备注默认留在当前 Chrome 配置中；Google 同步只在你主动操作或明确启用自动上传后发生。</p>
+        <div class="page-meta">
+          <span>生效：2026 年 8 月 27 日</span>
+          <span>更新：2026 年 8 月 27 日</span>
+          <span>版本：1.0</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell content-layout">
+      <nav class="toc" aria-label="隐私政策目录">
+        <strong>目录</strong>
+        <a href="#data">处理的数据</a>
+        <a href="#local">本地存储</a>
+        <a href="#diagnostics">诊断日志</a>
+        <a href="#google">Google 同步</a>
+        <a href="#oauth">OAuth 与指纹</a>
+        <a href="#limited-use">Limited Use</a>
+        <a href="#control">用户控制</a>
+        <a href="#contact">联系渠道</a>
+      </nav>
+
+      <article class="policy">
+        <section id="data">
+          <p class="eyebrow">01 · Data</p>
+          <h2>PageRecorder 处理什么</h2>
+          <p>只有在用户主动截图、框选、截取完整网页、开始录屏、填写备注，或明确启用录屏后自动上传时，PageRecorder 才处理与该操作有关的数据：</p>
+          <ul>
+            <li>用户所选网页的可见画面，以截图或 WebM 录屏形式保存；录屏时“同步录制标签页声音”默认开启，用户可在开始前关闭，扩展不采集麦克风声音；</li>
+            <li>网页标题、来源 URL、采集类型、采集时间、文件类型与大小；</li>
+            <li>用户填写的证据标题和分析备注；</li>
+            <li>为维持录屏、上传与错误恢复产生的运行状态；</li>
+            <li>用户选择 Google 功能时产生的 Drive 文件、目录与 Google Doc 关联状态。</li>
+          </ul>
+          <p>PageRecorder 不以读取为目的收集 Cookie、密码、表单历史或完整浏览历史，也不会在未发起采集时持续监控浏览活动。页面自身可能在截图或录屏中显示敏感信息；用户应在采集和分享前自行检查画面。</p>
+        </section>
+
+        <section id="local">
+          <p class="eyebrow">02 · Local first</p>
+          <h2>本地存储与保留</h2>
+          <p>截图、录屏（包含用户选择保留的标签页音轨）、标题、URL、时间和备注保存在当前 Chrome 配置文件内的扩展 IndexedDB 中。它们保留到用户在素材库删除对应素材、清除扩展数据，或卸载扩展为止。</p>
+          <ul>
+            <li>删除本地素材不会自动删除已上传的 Google Drive 文件或已写入 Google Docs 的内容；</li>
+            <li>卸载扩展通常会由 Chrome 清除该扩展的本地数据，但不会清除 Google 云端副本；</li>
+            <li>本地文件不会自动发送给 PageRecorder 发布者或其自建服务器。</li>
+          </ul>
+        </section>
+
+        <section id="diagnostics">
+          <p class="eyebrow">03 · Diagnostics</p>
+          <h2>本机诊断日志</h2>
+          <p>为帮助用户排查截图、录屏、本地保存、OAuth、Drive、Docs 和 Chrome runtime 错误，PageRecorder 在 <code>chrome.storage.local</code> 中保留有限诊断日志。</p>
+          <ul>
+            <li>最多 <strong>300 条</strong>，每条最长保留 <strong>7 天</strong>，达到任一上限后自动清理；</li>
+            <li>用户可在设置页复制、下载或清空；</li>
+            <li>日志不保存截图、录像、请求正文、Cookie 或 OAuth token；账号标识、Drive/Doc ID、URL 路径、查询参数、邮箱等敏感字段会被删除或脱敏；</li>
+            <li>日志默认只在本机。只有用户主动导出并自行发送时，日志才会离开本机。</li>
+          </ul>
+          <div class="callout">GitHub Issue 可能公开可见。提交支持请求前，请检查并移除截图、录像、token 或其他敏感内容。</div>
+        </section>
+
+        <section id="google">
+          <p class="eyebrow">04 · Google</p>
+          <h2>Google Drive 与 Google Docs</h2>
+          <p>Google 同步是可选功能。用户点击“连接并检查 Google Drive”、手动上传、写入 Google Doc、明确开启并触发“录屏结束后自动上传”，或点击断开登录时，会分别触发授权、目录或文件核验、上传、Docs 写入或令牌撤销请求。连接成功后，素材库还可能为显示真实的账号、目录、文件和中断恢复状态而调用 Google API 复核；这些复核不上传新的本地素材。</p>
+
+          <h3>Google Drive</h3>
+          <ul>
+            <li>截图或录屏会上传到用户授权的 Google Drive；如果录屏时保留了标签页声音，音轨会作为 WebM 文件的一部分一并上传；</li>
+            <li>PageRecorder 创建并使用自己的素材目录，或复用此前由本扩展创建、带有兼容应用标记的目录；</li>
+            <li>扩展只查询和管理由本扩展创建或用户通过本扩展打开的文件，不为产品分析扫描用户的其他 Drive 内容；</li>
+            <li>云端文件持续保留到用户在 Drive 中删除。删除本地素材、断开登录或卸载扩展不会自动删除云端文件。</li>
+          </ul>
+
+          <h3>Google Docs</h3>
+          <p>当用户提供 Google Doc 链接或文档 ID 并点击写入时，PageRecorder 会向该文档追加所选素材的标题、类型、采集时间、来源 URL、分析备注和 Drive 链接。截图内嵌选项开启时，还会尝试插入截图。内容保留到用户在 Google Docs 中自行编辑或删除。</p>
+
+          <h3>临时公开截图权限</h3>
+          <p>Google Docs 需要能够读取图片才能完成截图内嵌。PageRecorder 会对相应 Drive 截图临时创建<strong>“知道链接的任何人可查看”（<code>anyone: reader</code>）</strong>权限，并在 Docs 抓取后立即重试撤销。</p>
+          <div class="callout"><strong>撤权失败风险：</strong>网络、Google API 或组织策略异常可能导致撤权失败，此时任何取得链接的人可能继续访问该文件。扩展会显示警告。用户应立即在 Google Drive 删除该文件的“知道链接的任何人”权限，或删除文件。关闭“在文档内嵌截图”并仅写入私有 Drive 链接，可避免创建这项临时权限。</div>
+        </section>
+
+        <section id="oauth">
+          <p class="eyebrow">05 · Identity</p>
+          <h2>OAuth token 与账号指纹</h2>
+          <ul>
+            <li>Google OAuth token 由 Chrome Identity API 获取和缓存，仅用于用户请求的 Drive/Docs 操作；PageRecorder 不把 token 写入素材 IndexedDB，也不发送给发布者服务器；</li>
+            <li>“断开 Google 登录”会尝试撤销 Google 端 token 并移除 Chrome 的本地授权缓存。远端撤销失败时，扩展会提示用户；</li>
+            <li>为防止切换账号后误复用旧账号文件，PageRecorder 会将 Drive 返回的 <code>permissionId</code> 做 SHA-256 单向哈希，并仅在本机保存账号指纹。原始标识不被保存，指纹不用于广告、分析或跨服务追踪。</li>
+          </ul>
+        </section>
+
+        <section id="limited-use">
+          <p class="eyebrow">06 · Limited Use</p>
+          <h2>不进行的处理</h2>
+          <p>PageRecorder 不包含广告、用户行为遥测或第三方分析脚本；不运营接收截图、录像、网页信息或 Google 用户数据的自建服务器；不出售、出租或向数据经纪商提供用户数据；不使用网页内容、Google 用户数据或诊断日志进行广告投放、营销画像、信用评估或通用人工智能模型训练。</p>
+          <div class="callout safe">PageRecorder 对从 Google API 获得的信息的使用和向其他应用的传输，遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>，包括其中的 <strong>Limited Use requirements</strong>。</div>
+          <p>Google 用户数据仅用于提供用户明确请求的 Drive 上传、文件状态核验和 Google Docs 写入功能。PageRecorder 不允许人工读取这些数据；除非用户主动把导出的诊断资料提交给支持渠道、为满足适用法律要求，或为防止安全事件且访问范围受到严格限制。</p>
+          <p>本站不嵌入外部字体、脚本、广告或追踪器。本站由 GitHub Pages 托管；GitHub 可能按照其自身政策处理常规访问日志。</p>
+        </section>
+
+        <section id="control">
+          <p class="eyebrow">07 · Control</p>
+          <h2>用户控制与删除</h2>
+          <ol>
+            <li>在素材库删除本地截图、录屏和备注；</li>
+            <li>在设置页清空本机诊断日志；</li>
+            <li>关闭录屏后自动上传或截图内嵌选项；</li>
+            <li>断开 Google 登录并尝试撤销授权；</li>
+            <li>在 Drive 或 Docs 中删除云端文件、内容和共享权限；</li>
+            <li>在 Google 账号的“第三方应用和服务”页面撤销访问；</li>
+            <li>卸载扩展以删除扩展的本地存储。</li>
+          </ol>
+        </section>
+
+        <section id="contact">
+          <p class="eyebrow">08 · Contact</p>
+          <h2>联系与政策变更</h2>
+          <p>隐私或支持问题请通过 <a href="https://github.com/jiagsaw/PageRecorder-site/issues">PageRecorder GitHub Issues</a> 提交。请勿在公开 Issue 中附加未经检查的敏感资料。</p>
+          <div class="callout safe"><strong>发布者联系方式：</strong>Chrome Web Store 商品页会另行显示经商店验证的发布者联系邮箱。在该邮箱完成商店验证前，本政策不编造或展示未经验证的邮箱地址。</div>
+          <p>如果数据处理方式发生实质变化，本政策会更新生效日期；需要新增权限或扩大数据用途时，PageRecorder 会通过扩展更新说明、权限提示或新的用户选择告知用户。</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p>© 2026 PageRecorder · 本地优先的网页证据记录器。</p>
+      <div class="footer-links">
+        <a href="index.html">产品</a>
+        <a href="support.html">支持</a>
+        <a href="https://github.com/jiagsaw/PageRecorder-site/issues">GitHub Issues</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
