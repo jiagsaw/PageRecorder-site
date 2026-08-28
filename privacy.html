@@ -56,7 +56,7 @@
         <section id="data">
           <p class="eyebrow">01 · Data</p>
           <h2>PageRecorder 处理什么</h2>
-          <p>只有在用户主动截图、框选、截取完整网页、开始录屏、填写备注，或明确启用录屏后自动上传时，PageRecorder 才处理与该操作有关的数据：</p>
+          <p>只有在用户主动截图、框选、截取完整网页、开始录屏、填写备注，或明确启用截图/录屏对应的自动上传开关时，PageRecorder 才处理与该操作有关的数据：</p>
           <ul>
             <li>用户所选网页的可见画面，以截图或 WebM 录屏形式保存；录屏时“同步录制标签页声音”默认开启，用户可在开始前关闭，扩展不采集麦克风声音；</li>
             <li>网页标题、来源 URL、采集类型、采集时间、文件类型与大小；</li>
@@ -94,7 +94,7 @@
         <section id="google">
           <p class="eyebrow">04 · Google</p>
           <h2>Google Drive 与 Google Docs</h2>
-          <p>Google 同步是可选功能。用户点击“连接并检查 Google Drive”、手动上传、写入 Google Doc、明确开启并触发“录屏结束后自动上传”，或点击断开登录时，会分别触发授权、目录或文件核验、上传、Docs 写入或令牌撤销请求。连接成功后，素材库还可能为显示真实的账号、目录、文件和中断恢复状态而调用 Google API 复核；这些复核不上传新的本地素材。</p>
+          <p>Google 同步是可选功能。用户点击“连接并检查 Google Drive”、手动上传、写入 Google Doc、明确开启并触发“截图完成后自动上传”或“录屏结束后自动上传”，或点击断开登录时，会分别触发授权、目录或文件核验、上传、Docs 写入或令牌撤销请求。截图与录屏开关彼此独立且均默认关闭。连接成功后，素材库还可能为显示真实的账号、目录、文件和中断恢复状态而调用 Google API 复核；这些复核不上传新的本地素材。</p>
 
           <h3>Google Drive</h3>
           <ul>
@@ -105,10 +105,10 @@
           </ul>
 
           <h3>Google Docs</h3>
-          <p>当用户提供 Google Doc 链接或文档 ID 并点击写入时，PageRecorder 会向该文档追加所选素材的标题、类型、采集时间、来源 URL、分析备注和私有 Drive 链接。内容保留到用户在 Google Docs 中自行编辑或删除。</p>
+          <p>当用户提供 Google Doc 链接或文档 ID 并点击写入时，PageRecorder 会临时读取该指定文档中的证据 ID 和修订版本，用于避免重试造成重复条目；随后仅在尚未找到同一证据 ID 时，追加标题、类型、采集时间、来源 URL、分析备注、证据 ID 和私有 Drive 链接。读取到的文档文本不会写入本地存储、诊断日志或发送给开发者。内容保留到用户在 Google Docs 中自行编辑或删除。</p>
 
           <h3>不创建公开截图权限</h3>
-          <p>PageRecorder 不会为 Google Docs 写入流程创建 <code>anyone: reader</code> 或“知道链接的任何人可查看”权限。截图和录屏保持用户现有的 Drive 共享状态；文档中只写入对应 Drive 链接。</p>
+          <p>PageRecorder 不会为 Google Docs 写入流程创建 <code>anyone: reader</code> 或“知道链接的任何人可查看”权限。截图和录屏保持用户现有的 Drive 共享状态；文档中写入结构化证据文本和对应的私有 Drive 链接。</p>
         </section>
 
         <section id="oauth">
@@ -126,7 +126,7 @@
           <h2>不进行的处理</h2>
           <p>PageRecorder 不包含广告、用户行为遥测或第三方分析脚本；不运营接收截图、录像、网页信息或 Google 用户数据的自建服务器；不出售、出租或向数据经纪商提供用户数据；不使用网页内容、Google 用户数据或诊断日志进行广告投放、营销画像、信用评估或通用人工智能模型训练。</p>
           <div class="callout safe">PageRecorder 对从 Google API 获得的信息的使用和向其他应用的传输，遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>，包括其中的 <strong>Limited Use requirements</strong>。</div>
-          <p>Google 用户数据仅用于提供用户明确请求的 Drive 上传、文件状态核验和 Google Docs 写入功能。PageRecorder 不允许人工读取这些数据；除非用户主动把导出的诊断资料提交给支持渠道、为满足适用法律要求，或为防止安全事件且访问范围受到严格限制。</p>
+          <p>Google 用户数据仅用于提供用户明确请求的 Drive 上传、文件状态核验、Google Docs 去重检查和写入功能。PageRecorder 不允许人工读取这些数据；除非用户主动把导出的诊断资料提交给支持渠道、为满足适用法律要求，或为防止安全事件且访问范围受到严格限制。</p>
           <p>本站不嵌入外部字体、脚本、广告或追踪器。本站由 GitHub Pages 托管；GitHub 可能按照其自身政策处理常规访问日志。</p>
         </section>
 
@@ -136,7 +136,7 @@
           <ol>
             <li>在素材库删除本地截图、录屏和备注；</li>
             <li>在设置页清空本机诊断日志；</li>
-            <li>关闭录屏后自动上传；</li>
+            <li>分别关闭截图或录屏自动上传；</li>
             <li>断开 Google 登录并尝试撤销授权；</li>
             <li>在 Drive 或 Docs 中删除云端文件、内容和共享权限；</li>
             <li>在 Google 账号的“第三方应用和服务”页面撤销访问；</li>
