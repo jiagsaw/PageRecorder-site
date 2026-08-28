@@ -59,7 +59,7 @@
 
         <details>
           <summary>Google Drive 一直显示等待授权</summary>
-          <p>打开 PageRecorder 设置页，检查 Google 授权状态，再从素材详情重新发起上传。如果切换过 Google 账号，请先断开旧账号并重新授权。</p>
+          <p>打开 PageRecorder 设置页，点击“连接并检查 Google Drive”，验证成功后再从素材详情重新发起上传。如果切换过 Google 账号，请先断开旧账号并重新授权；断开会同时关闭自动上传。</p>
         </details>
 
         <details>
@@ -68,13 +68,8 @@
         </details>
 
         <details>
-          <summary>Google Doc 没有出现内嵌截图</summary>
-          <p>组织策略可能禁止临时公开图片，或 Google Docs 未能抓取图片。PageRecorder 会尝试退回为私有 Drive 链接。检查文档 ID、编辑权限和详情页警告。</p>
-        </details>
-
-        <details>
-          <summary>提示临时公开权限撤销失败</summary>
-          <p>立即打开对应 Drive 文件的“共享”设置，移除“知道链接的任何人”访问权限，或删除文件。之后可关闭“在文档内嵌截图”，仅写入私有 Drive 链接。</p>
+          <summary>为什么 Google Doc 里是 Drive 链接而不是内嵌截图？</summary>
+          <p>这是 PageRecorder 的隐私设计：扩展不会为了内嵌图片临时公开 Drive 文件。登录正确的 Google 账号后，点击文档中的私有 Drive 链接即可查看素材。</p>
         </details>
 
         <details>

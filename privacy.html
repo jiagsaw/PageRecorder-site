@@ -33,7 +33,7 @@
         <p class="lead">PageRecorder 本地优先。截图、录屏和备注默认留在当前 Chrome 配置中；Google 同步只在你主动操作或明确启用自动上传后发生。</p>
         <div class="page-meta">
           <span>生效：2026 年 8 月 27 日</span>
-          <span>更新：2026 年 8 月 27 日</span>
+          <span>更新：2026 年 8 月 28 日</span>
           <span>版本：1.0</span>
         </div>
       </div>
@@ -105,11 +105,10 @@
           </ul>
 
           <h3>Google Docs</h3>
-          <p>当用户提供 Google Doc 链接或文档 ID 并点击写入时，PageRecorder 会向该文档追加所选素材的标题、类型、采集时间、来源 URL、分析备注和 Drive 链接。截图内嵌选项开启时，还会尝试插入截图。内容保留到用户在 Google Docs 中自行编辑或删除。</p>
+          <p>当用户提供 Google Doc 链接或文档 ID 并点击写入时，PageRecorder 会向该文档追加所选素材的标题、类型、采集时间、来源 URL、分析备注和私有 Drive 链接。内容保留到用户在 Google Docs 中自行编辑或删除。</p>
 
-          <h3>临时公开截图权限</h3>
-          <p>Google Docs 需要能够读取图片才能完成截图内嵌。PageRecorder 会对相应 Drive 截图临时创建<strong>“知道链接的任何人可查看”（<code>anyone: reader</code>）</strong>权限，并在 Docs 抓取后立即重试撤销。</p>
-          <div class="callout"><strong>撤权失败风险：</strong>网络、Google API 或组织策略异常可能导致撤权失败，此时任何取得链接的人可能继续访问该文件。扩展会显示警告。用户应立即在 Google Drive 删除该文件的“知道链接的任何人”权限，或删除文件。关闭“在文档内嵌截图”并仅写入私有 Drive 链接，可避免创建这项临时权限。</div>
+          <h3>不创建公开截图权限</h3>
+          <p>PageRecorder 不会为 Google Docs 写入流程创建 <code>anyone: reader</code> 或“知道链接的任何人可查看”权限。截图和录屏保持用户现有的 Drive 共享状态；文档中只写入对应 Drive 链接。</p>
         </section>
 
         <section id="oauth">
@@ -117,7 +116,7 @@
           <h2>OAuth token 与账号指纹</h2>
           <ul>
             <li>Google OAuth token 由 Chrome Identity API 获取和缓存，仅用于用户请求的 Drive/Docs 操作；PageRecorder 不把 token 写入素材 IndexedDB，也不发送给发布者服务器；</li>
-            <li>“断开 Google 登录”会尝试撤销 Google 端 token 并移除 Chrome 的本地授权缓存。远端撤销失败时，扩展会提示用户；</li>
+            <li>“断开 Google 登录”会先关闭持久 Google 连接开关和自动上传，再移除 Chrome 的本地授权缓存；若当前运行进程持有活动 token，还会限时尝试远端撤销。远端撤销失败不会重新开启本地连接，只有用户在设置页再次明确连接后才会恢复 Google 操作；</li>
             <li>为防止切换账号后误复用旧账号文件，PageRecorder 会将 Drive 返回的 <code>permissionId</code> 做 SHA-256 单向哈希，并仅在本机保存账号指纹。原始标识不被保存，指纹不用于广告、分析或跨服务追踪。</li>
           </ul>
         </section>
@@ -137,7 +136,7 @@
           <ol>
             <li>在素材库删除本地截图、录屏和备注；</li>
             <li>在设置页清空本机诊断日志；</li>
-            <li>关闭录屏后自动上传或截图内嵌选项；</li>
+            <li>关闭录屏后自动上传；</li>
             <li>断开 Google 登录并尝试撤销授权；</li>
             <li>在 Drive 或 Docs 中删除云端文件、内容和共享权限；</li>
             <li>在 Google 账号的“第三方应用和服务”页面撤销访问；</li>
